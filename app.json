@@ -4,7 +4,7 @@
     "slug": "trackly",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/default/icon.png",
+    "icon": "./src/assets/piks/png/3d-mobile-shopping-concept-with-delivery-boxes-shopping-bag.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -12,14 +12,22 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "ios": {
-      "supportsTablet": true
-    },
     "android": {
+      "splash": {
+        "resizeMode": "cover",
+        "backgroundColor": "#ffffff"
+      },
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/default/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
+    },
+    "ios": {
+      "splash": {
+        "resizeMode": "cover",
+        "backgroundColor": "#ffffff"
+      },
+      "supportsTablet": true
     },
     "web": {
       "favicon": "./src/assets/default/favicon.png"

@@ -6,7 +6,12 @@ const CustomButton = (props) => {
   return (
     <Button
       title={props.title}
-      titleStyle={[CustomButtonStyle.titleStyle, { color: props.textColor }]}
+      uppercase={props.uppercase}
+      radius={props.radius}
+      size={props.size}
+      titleStyle={[CustomButtonStyle.titleStyle, { color: props.titleColor }]}
+      type={props.type}
+      raised={props.raised}
       buttonStyle={[
         CustomButtonStyle.buttonStyle,
         {
@@ -17,8 +22,13 @@ const CustomButton = (props) => {
         },
       ]}
       disabled={props.isDisabled}
+      disabledStyle={{
+        backgroundColor: props.disabledBackgroundColor,
+        borderColor: props.disabledBorderColor,
+      }}
       color={props.color}
       loading={props.loading}
+      loadingProps={{ size: props.loaderSize, color: props.loaderColor }}
       onPress={props.handlePress}
     />
   );
