@@ -1,8 +1,13 @@
 import React from "react";
+import { View, StyleSheet } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  useNavigation,
+  useNavigationState,
+} from "@react-navigation/native";
 import colors from "./assets/colors/colors";
 
 // Public screens
@@ -18,30 +23,78 @@ const Drawer = createDrawerNavigator();
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
 
-const SplashScreenTabs = ({ navigation }) => {
+// Custom button
+import CustomButton from "./components/CustomButton/CustomButton";
+
+const TextComponent = (screen) => {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarStyle: { display: "none" },
-      }}
-    >
-      <Tab.Screen name="Landing" component={Landing} />
-      <Tab.Screen name="SplashScreen1" component={SplashScreen1} />
-      <Tab.Screen name="SplashScreen2" component={SplashScreen2} />
-      {/* <Tab.Screen
-        name="SplashScreen4"
-        component={SplashScreen4}
-        options={{ tabBarVisible: false }}
-        listeners={{
-          focus: () => {
-            setTimeout(() => {
-              navigation.replace("Drawer"); // Redirection automatique
-            }, 2000); // Attendre 2s avant de rediriger
-          },
-        }}
-      /> */}
-    </Tab.Navigator>
+    <View>
+      <Text>Text</Text>
+    </View>
   );
+};
+
+const Button = (screen) => {
+  return (
+    <View style={styles.buttonContainer}>
+      <CustomButton
+        title={`Continuer`} // Affiche le bon écran actif
+        uppercase={false}
+        titleColor={colors.white}
+        type={"solid"}
+        borderRadius={15}
+        borderColor={colors.white}
+        buttonHeight={55}
+        isDisabled={false}
+        disabledBackgroundColor={colors.lightgray}
+        disabledBorderColor={colors.lightgray}
+        color={colors.green}
+        loading={false}
+        loaderSize={30}
+        loaderColor={colors.white}
+        raised={false}
+        handlePress={() => {}}
+      />
+    </View>
+  );
+};
+
+const SplashScreenTabs = () => {
+  const navigation = useNavigation();
+  const currentRoute = useNavigationState(
+    (state) => state.routes[state.index]?.name
+  );
+  console.log(currentRoute);
+  return (
+    <View style={{ flex: 1 }}>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarStyle: { display: "none" },
+        }}
+      >
+        <Tab.Screen name="Landing" component={Landing} />
+        <Tab.Screen name="SplashScreen1" component={SplashScreen1} />
+        <Tab.Screen name="SplashScreen2" component={SplashScreen2} />
+      </Tab.Navigator>
+      <Button screen="Button" />
+    </View>
+  );
+};
+
+const ScreenWithButton = (ScreenComponent) => {
+  return (props) => {
+    return (
+      <View style={{ flex: 1 }}>
+        <ScreenComponent {...props} />
+        <View style={styles.buttonContainer}>
+          <CustomButton
+            title={`Écran: ${props.route.name}`}
+            handlePress={() => {}}
+          />
+        </View>
+      </View>
+    );
+  };
 };
 
 const DrawerNavigator = () => {
@@ -50,7 +103,7 @@ const DrawerNavigator = () => {
       screenOptions={{
         headerShown: false,
         drawerStyle: {
-          backgroundColor: colors.black,
+          backgroundColor: colors.white,
           width: 240,
         },
         drawerLabelStyle: {
@@ -79,5 +132,18 @@ const Shell = () => {
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    position: "absolute",
+    bottom: 20,
+    left: "50%",
+    transform: [{ translateX: -50 }],
+    backgroundColor: colors.primary,
+    padding: 10,
+    borderRadius: 10,
+    zIndex: 10,
+  },
+});
 
 export default Shell;

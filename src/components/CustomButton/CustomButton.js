@@ -7,10 +7,8 @@ const CustomButton = (props) => {
     <Button
       title={props.title}
       uppercase={props.uppercase}
-      radius={props.radius}
-      size={props.size}
       titleStyle={[CustomButtonStyle.titleStyle, { color: props.titleColor }]}
-      type={props.type}
+      type={props.type} // solid, clear & outline
       raised={props.raised}
       buttonStyle={[
         CustomButtonStyle.buttonStyle,
@@ -19,6 +17,7 @@ const CustomButton = (props) => {
           borderRadius: props.borderRadius || 10,
           borderColor: props.borderColor,
           height: props.buttonHeight || 55,
+          width: "100%",
         },
       ]}
       disabled={props.isDisabled}

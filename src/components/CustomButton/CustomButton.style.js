@@ -8,6 +8,7 @@ const CustomButtonStyle = StyleSheet.create({
   buttonStyle: {
     borderRadius: 10,
     height: 55,
+    alignSelf: "center",
   },
 });
 export default CustomButtonStyle;

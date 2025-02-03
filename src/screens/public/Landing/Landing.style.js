@@ -12,5 +12,11 @@ const LandingStyle = StyleSheet.create({
     height: "100%",
     resizeMode: "center",
   },
+  button: {
+    position: "absolute",
+    bottom: 75,
+    width: "100%",
+    alignItems: "center",
+  },
 });
 export default LandingStyle;
