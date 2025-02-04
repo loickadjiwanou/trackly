@@ -1,13 +1,12 @@
 import { StyleSheet } from "react-native";
 import colors from "../../assets/colors/colors";
+import fonts from "../../assets/fonts/font";
 const CustomButtonStyle = StyleSheet.create({
   titleStyle: {
-    fontSize: 16,
-    fontFamily: "RobotoMedium",
+    fontSize: fonts.large,
+    fontFamily: "FredokaMedium",
   },
   buttonStyle: {
-    borderRadius: 10,
-    height: 55,
     alignSelf: "center",
   },
 });

@@ -15,9 +15,9 @@ const CustomButton = (props) => {
         {
           borderWidth: 1,
           borderRadius: props.borderRadius || 10,
-          borderColor: props.borderColor,
+          borderColor: props.borderColor || "transparent",
           height: props.buttonHeight || 55,
-          width: "100%",
+          width: props.buttonWidth || 350,
         },
       ]}
       disabled={props.isDisabled}

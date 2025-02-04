@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import { StatusBar } from "expo-status-bar";
 import { NativeRouter } from "react-router-native";
 import Shell from "./src/Shell";
